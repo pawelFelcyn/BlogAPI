@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Data
+namespace Infrastructure.Data;
+
+public class BlogDbContext : DbContext
 {
-    internal class BlogDbContext
+    public DbSet<User> Users { get; set; }
+
+    public BlogDbContext(DbContextOptions options) : base(options)
     {
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.OnUserCreating();
     }
 }
