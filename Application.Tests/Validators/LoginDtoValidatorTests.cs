@@ -7,12 +7,12 @@ using Xunit.Abstractions;
 
 namespace Application.Tests.Validators;
 
-public class LoginDtoValidatorTests : IClassFixture<LoginDtoValiodator>
+public class LoginDtoValidatorTests : IClassFixture<LoginDtoValidator>
 {
-    private readonly LoginDtoValiodator _vaildator;
+    private readonly LoginDtoValidator _vaildator;
     private ITestOutputHelper _testOutputHelper;
 
-    public LoginDtoValidatorTests(LoginDtoValiodator vaildator, ITestOutputHelper testOutputHelper)
+    public LoginDtoValidatorTests(LoginDtoValidator vaildator, ITestOutputHelper testOutputHelper)
     {
         _vaildator = vaildator;
         _testOutputHelper = testOutputHelper;
