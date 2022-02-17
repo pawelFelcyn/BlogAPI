@@ -2,7 +2,7 @@
 
 namespace Application.Authentication;
 
-public interface ITokenGeterator
+public interface ITokenGenerator
 {
     string GetTokenStr(User user);
 }

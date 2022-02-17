@@ -13,10 +13,10 @@ internal class AccountService : IAccountService
     private readonly IAccountRepository _repository;
     private readonly IMapper _mapper;
     private readonly IPasswordHasher<User> _passwordHasher;
-    private readonly ITokenGeterator _tokenGenerator;
+    private readonly ITokenGenerator _tokenGenerator;
 
     public AccountService(IAccountRepository repository, IMapper mapper, IPasswordHasher<User> passwordHasher,
-        ITokenGeterator tokenGenerator)
+        ITokenGenerator tokenGenerator)
     {
         _repository = repository;
         _mapper = mapper;

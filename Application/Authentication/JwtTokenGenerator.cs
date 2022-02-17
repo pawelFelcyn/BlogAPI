@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Application.Authentication;
 
-public class JwtTokenGenerator : ITokenGeterator
+public class JwtTokenGenerator : ITokenGenerator
 {
     private readonly AuthenticationSettings _authenticationSettings;
 

@@ -27,7 +27,7 @@ public static class DependencyInjection
     public static IServiceCollection AddServices(this IServiceCollection services)
     {
         services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
-        services.AddScoped<ITokenGeterator, JwtTokenGenerator>();
+        services.AddScoped<ITokenGenerator, JwtTokenGenerator>();
         services.AddScoped<IAccountService, AccountService>();
 
         return services;
