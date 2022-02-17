@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Entities;
 
-namespace Application.Authentication
+namespace Application.Authentication;
+
+public interface ITokenGeterator
 {
-    internal interface ITokenGeterator
-    {
-    }
+    string GetTokenStr(User user);
 }
