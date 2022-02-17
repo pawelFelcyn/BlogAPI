@@ -10,4 +10,9 @@ public class User
     public string Role { get; set; }
     public string Email { get; set; }
     public string PasswordHash { get; set; }
+
+    public User()
+    {
+        DateOfAppending = DateTime.UtcNow;
+    }
 }
