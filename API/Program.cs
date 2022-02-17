@@ -1,4 +1,5 @@
 using Application;
+using Infrastructure;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,7 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<BlogDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("BlogConnection")));
 builder.Services.AddValidators();
-builder.Services.AddAutoMapper();
+builder.Services.AddAutoMapper().AddHelpers();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
