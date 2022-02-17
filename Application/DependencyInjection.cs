@@ -1,5 +1,8 @@
-﻿using Application.Services;
+﻿using Application.Authentication;
+using Application.Services;
+using Domain.Entities;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -23,6 +26,8 @@ public static class DependencyInjection
 
     public static IServiceCollection AddServices(this IServiceCollection services)
     {
+        services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+        services.AddScoped<ITokenGeterator, JwtTokenGenerator>();
         services.AddScoped<IAccountService, AccountService>();
 
         return services;
