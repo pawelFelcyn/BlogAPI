@@ -12,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<BlogDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("BlogConnection")));
 builder.Services.AddValidators();
-
+builder.Services.AddAutoMapper();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

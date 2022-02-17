@@ -12,4 +12,11 @@ public static class DependencyInjection
 
         return services;
     }
+
+    public static IServiceCollection AddAutoMapper(this IServiceCollection services)
+    {
+        services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+        return services;
+    }
 }
