@@ -1,3 +1,4 @@
+using API.Middleware;
 using Application;
 using Infrastructure;
 using Infrastructure.Data;
@@ -14,6 +15,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<BlogDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("BlogConnection")));
 builder.Services.AddValidators().AddServices();
 builder.Services.AddAutoMapper().AddHelpers().AddRepositories();
+builder.Services.AddScoped<ErrorHandlingMiddleware>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,6 +24,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ErrorHandlingMiddleware>();
 
 app.UseHttpsRedirection();
 
