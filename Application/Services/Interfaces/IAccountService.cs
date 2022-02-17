@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.Dtos;
 
-namespace Application.Services.Interfaces
+namespace Application.Services.Interfaces;
+
+public interface IAccountService
 {
-    internal interface IAccountService
-    {
-    }
+    string GetToken(LoginDto dto);
+    void Register(RegisterDto dto);
 }
