@@ -12,7 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<BlogDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("BlogConnection")));
-builder.Services.AddValidators();
+builder.Services.AddValidators().AddServices();
 builder.Services.AddAutoMapper().AddHelpers();
 var app = builder.Build();
 
