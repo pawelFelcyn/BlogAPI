@@ -30,6 +30,7 @@ public static class DependencyInjection
         services.AddScoped<ITokenGenerator, JwtTokenGenerator>();
         services.AddScoped<IAccountService, AccountService>();
         services.AddScoped<IUserContextService, UserContextService>();
+        services.AddScoped<IPostService, PostService>();
         services.AddHttpContextAccessor();
 
         return services;
