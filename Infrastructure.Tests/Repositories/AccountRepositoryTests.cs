@@ -62,6 +62,7 @@ public class AccountRepositoryTests
             LastName = "",
             Nick = "",
             Role = "",
-            PasswordHash = ""
+            PasswordHash = "",
+            DateOfAppending = System.DateTime.UtcNow
         };
 }
