@@ -3,9 +3,7 @@ using Domain.Exceptions;
 using FluentAssertions;
 using Infrastructure.Data;
 using Infrastructure.Repositories;
-using Infrastructure.Tests.Extensions;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Xunit;
 
 namespace Infrastructure.Tests.Repositories;
@@ -44,6 +42,16 @@ public class AccountRepositoryTests
         var action = () => _repository.GetByEmail("invalid email");
 
         Assert.Throws<InvalidEmailException>(action);
+    }
+
+    [Fact]
+    public void Add_ForGivenUser_AddsItToDatabase()
+    {
+        var user = GetUser();
+
+        _context.Add(user);
+
+        _context.Users.Should().Contain(user);
     }
 
     private User GetUser()
