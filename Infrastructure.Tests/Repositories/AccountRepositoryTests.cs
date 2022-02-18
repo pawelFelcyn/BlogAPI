@@ -49,7 +49,7 @@ public class AccountRepositoryTests
     {
         var user = GetUser();
 
-        _context.Add(user);
+        _repository.Add(user);
 
         _context.Users.Should().Contain(user);
     }
