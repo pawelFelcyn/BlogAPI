@@ -2,7 +2,7 @@
 
 public record PostDetailsDto
 {
-    public int Id { get; set; }
+    public int Id { get; init; }
     public string? Title { get; init; }
     public string? Content { get; init; }
     public DateTime LastModyfied { get; init; }
