@@ -29,7 +29,9 @@ public class AccountRepositoryTests
     [Fact]
     public void GetByEmail_ForCorrentEmail_ReturnsProperUser()
     {
-        var user = _context.SeedUser();
+        var user = GetUser();
+        _context.Users.Add(user);
+        _context.SaveChanges();
 
         var result = _repository.GetByEmail(user.Email);
 
@@ -43,4 +45,15 @@ public class AccountRepositoryTests
 
         Assert.Throws<InvalidEmailException>(action);
     }
+
+    private User GetUser()
+        => new User()
+        {
+            Email = "email",
+            FirstName = "",
+            LastName = "",
+            Nick = "",
+            Role = "",
+            PasswordHash = ""
+        };
 }
