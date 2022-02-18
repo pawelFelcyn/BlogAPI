@@ -29,5 +29,6 @@ public class AccountRepository : IAccountRepository
     public void Add(User user)
     {
         _dbContext.Users.Add(user);
+        _dbContext.SaveChanges();
     }
 }
