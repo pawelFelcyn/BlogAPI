@@ -1,7 +1,9 @@
 ﻿using Application.Authentication;
+using Application.Authorization;
 using Application.Services;
 using Domain.Entities;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -32,6 +34,13 @@ public static class DependencyInjection
         services.AddScoped<IUserContextService, UserContextService>();
         services.AddScoped<IPostService, PostService>();
         services.AddHttpContextAccessor();
+
+        return services;
+    }
+
+    public static IServiceCollection AddAuthorizationHandlers(this IServiceCollection services)
+    {
+        services.AddScoped<IAuthorizationHandler, PostOperationRequirementHandler>();
 
         return services;
     }

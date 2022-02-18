@@ -17,7 +17,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<BlogDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("BlogConnection")));
 builder.Services.AddValidators().AddServices();
-builder.Services.AddAutoMapper().AddHelpers().AddRepositories();
+builder.Services.AddAutoMapper().AddHelpers().AddRepositories().AddAuthorizationHandlers();
 builder.Services.AddScoped<ErrorHandlingMiddleware>();
 
 var authenticationSettings = new AuthenticationSettings();
