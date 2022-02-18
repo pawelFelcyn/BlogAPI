@@ -40,4 +40,31 @@ public static class ModelBuilderExtensions
 
         return builder;
     }
+
+    public static ModelBuilder OnPostCraeting(this ModelBuilder builder)
+    {
+        builder.Entity<Post>()
+            .Property(p => p.Title)
+            .IsRequired()
+            .HasMaxLength(100);
+
+        builder.Entity<Post>()
+            .Property(p => p.Content)
+            .IsRequired()
+            .HasMaxLength(5000);
+
+        builder.Entity<Post>()
+            .Property(p => p.Created)
+            .IsRequired();
+
+        builder.Entity<Post>()
+            .Property(p => p.LastModyfied)
+            .IsRequired();
+
+        builder.Entity<Post>()
+            .Property(p => p.CreatedById)
+            .IsRequired();
+
+        return builder;
+    }
 }
