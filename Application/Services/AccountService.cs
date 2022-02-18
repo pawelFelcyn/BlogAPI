@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Application.Services;
 
-internal class AccountService : IAccountService
+public class AccountService : IAccountService
 {
     private readonly IAccountRepository _repository;
     private readonly IMapper _mapper;
