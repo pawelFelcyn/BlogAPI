@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.Dtos;
 
-namespace Application.Services.Interfaces
+namespace Application.Services.Interfaces;
+
+public interface IPostService
 {
-    internal interface IPostService
-    {
-    }
+    IEnumerable<PostDto> GetAll();
+    PostDetailsDto GetById(int id);
+    PostDetailsDto Create(CreatePostDto dto);
+    PostDetailsDto Update(int id, UpdatePostDto dto);
+    void Delete(int id);
 }
