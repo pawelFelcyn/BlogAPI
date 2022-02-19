@@ -70,6 +70,16 @@ public class PostRepositoryTests
         result.Content.Should().Be(newContent);
     }
 
+    [Fact]
+    public void Remove_ForGivenPost_RemovesItFromDatabase()
+    {
+        var post = SeedPost();
+
+        _postRepository.Remove(post);
+
+        _dbContext.Posts.Should().NotContain(post);
+    }
+
     private Post SeedPost()
     {
         var post = GetPost();
