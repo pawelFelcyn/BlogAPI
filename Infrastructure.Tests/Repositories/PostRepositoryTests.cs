@@ -58,6 +58,18 @@ public class PostRepositoryTests
         _dbContext.Posts.Should().Contain(post);
     }
 
+    [Fact]
+    public void Update_ForGivenArguments_UpdatesProperPost()
+    {
+        var post = SeedPost();
+        var newContent = "updated";
+
+        var result = _postRepository.Update(post, newContent);
+
+        result.Should().Be(post);
+        result.Content.Should().Be(newContent);
+    }
+
     private Post SeedPost()
     {
         var post = GetPost();
