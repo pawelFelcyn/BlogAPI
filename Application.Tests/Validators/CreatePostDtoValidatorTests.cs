@@ -1,8 +1,8 @@
 ﻿using Application.Dtos;
+using Application.Tests.Helpers;
 using Application.Validators;
 using FluentAssertions;
 using System.Collections.Generic;
-using System.Text;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -22,14 +22,14 @@ public class CreatePostDtoValidatorTests : IClassFixture<CreatePostDtoValidator>
     public static IEnumerable<object[]> ValidateGetTestData()
     {
         yield return new object[] { new CreatePostDto("Title", "Content"), true };
-        yield return new object[] { new CreatePostDto(GetStringWithLenght(100), "Content"), true };
-        yield return new object[] { new CreatePostDto("Title", GetStringWithLenght(5000)), true };
+        yield return new object[] { new CreatePostDto(StringHelper.GetStringWithLength(100), "Content"), true };
+        yield return new object[] { new CreatePostDto("Title", StringHelper.GetStringWithLength(5000)), true };
         yield return new object[] { new CreatePostDto("", "Content"), false };
         yield return new object[] { new CreatePostDto(null, "Content"), false };
-        yield return new object[] { new CreatePostDto(GetStringWithLenght(101), "Content"), false };
+        yield return new object[] { new CreatePostDto(StringHelper.GetStringWithLength(101), "Content"), false };
         yield return new object[] { new CreatePostDto("Title", ""), false };
         yield return new object[] { new CreatePostDto("Title", null), false };
-        yield return new object[] { new CreatePostDto("Title", GetStringWithLenght(5001)), false };
+        yield return new object[] { new CreatePostDto("Title", StringHelper.GetStringWithLength(5001)), false };
     }
 
     [Theory]
@@ -44,17 +44,5 @@ public class CreatePostDtoValidatorTests : IClassFixture<CreatePostDtoValidator>
         }
 
         validationResult.IsValid.Should().Be(expectedIsValid);
-    }
-
-    private static string GetStringWithLenght(int length)
-    {
-        var sb = new StringBuilder();
-
-        for (int i = 0; i < length; i++)
-        {
-            sb.Append("x");
-        }
-
-        return sb.ToString();
     }
 }
