@@ -1,12 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.Dtos;
+using AutoMapper;
+using Domain.Entities;
 
-namespace Application.Mapping
+namespace Application.Mapping;
+
+public class PostMapConfiguration : IMapConfiguration
 {
-    internal class PostMapConfiguration
+    public void ConfigureMappings(Profile profile)
     {
+        profile.CreateMap<Post, PostDto>();
+
+        profile.CreateMap<Post, PostDetailsDto>();
+
+        profile.CreateMap<CreatePostDto, Post>()
+            .ForMember(p => p.Created, c => c.MapFrom(s => DateTime.UtcNow))
+            .ForMember(p => p.LastModyfied, c => c.MapFrom(s => DateTime.UtcNow));
     }
 }
