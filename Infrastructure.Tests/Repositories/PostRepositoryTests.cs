@@ -47,9 +47,29 @@ public class PostRepositoryTests
         result.Should().Be(post);
     }
 
+    [Fact]
+    public void Add_ForGivenPost_AddsItToDatabase()
+    {
+        var post = GetPost();
+
+        var result = _postRepository.Add(post);
+
+        result.Should().Be(post);
+        _dbContext.Posts.Should().Contain(post);
+    }
+
     private Post SeedPost()
     {
-        var post = new Post()
+        var post = GetPost();
+
+        _dbContext.Posts.Add(post);
+        _dbContext.SaveChanges();
+
+        return post;
+    }
+
+    private Post GetPost()
+        => new Post()
         {
             Title = "",
             Content = "",
@@ -57,10 +77,4 @@ public class PostRepositoryTests
             LastModyfied = System.DateTime.Now,
             CreatedById = 0
         };
-
-        _dbContext.Posts.Add(post);
-        _dbContext.SaveChanges();
-
-        return post;
-    }
 }
