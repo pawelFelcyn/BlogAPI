@@ -9,4 +9,6 @@ public class Post
     public DateTime LastModyfied { get; set; }
     public int CreatedById { get; set; }
     public virtual User? CreatedBy { get; set; }
+
+    public virtual List<Comment>? Comment { get; set; }
 }
