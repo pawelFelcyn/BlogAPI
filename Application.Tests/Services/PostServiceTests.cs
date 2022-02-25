@@ -6,6 +6,9 @@ using Domain.Interfaces;
 using FluentAssertions;
 using Microsoft.AspNetCore.Authorization;
 using Moq;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
 using Xunit;
 
 namespace Application.Tests.Services;
@@ -41,5 +44,22 @@ public class PostServiceTests
         var result = _postService.GetById(0);
 
         result.Should().Be(postDto);
+    }
+
+    [Fact]
+    public void Create_ForGivenCreatePostDto_ReturnsPostDetailsDto()
+    {
+        var postDetailsDto = new PostDetailsDto();
+        var createPostDto = new CreatePostDto(null, null);
+        var post = new Post();
+
+        _mapperMock.Setup(m => m.Map<PostDetailsDto>(It.IsAny<Post>())).Returns(postDetailsDto);
+        _mapperMock.Setup(m => m.Map<Post>(It.IsAny<CreatePostDto>())).Returns(post);
+        _userContextServiceMock.Setup(m => m.GetId).Returns(0);
+        _postRepositoryMock.Setup(m => m.Add(It.IsAny<Post>())).Returns(post);
+
+        var result = _postService.Create(createPostDto);
+
+        result.Should().Be(postDetailsDto);
     }
 }
