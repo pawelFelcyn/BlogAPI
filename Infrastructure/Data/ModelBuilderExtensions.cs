@@ -67,4 +67,30 @@ public static class ModelBuilderExtensions
 
         return builder;
     }
+
+    public static ModelBuilder OnCommentCreating(this ModelBuilder builder)
+    {
+        builder.Entity<Comment>()
+            .Property(c => c.Content)
+            .IsRequired()
+            .HasMaxLength(250);
+
+        builder.Entity<Comment>()
+            .Property(c => c.Created)
+            .IsRequired();
+
+        builder.Entity<Comment>()
+            .Property(c => c.LastModyfied)
+            .IsRequired();
+
+        builder.Entity<Comment>()
+            .Property(c => c.CreatedById)
+            .IsRequired();
+
+        builder.Entity<Comment>()
+            .Property(c => c.PostId)
+            .IsRequired();
+
+        return builder;
+    }
 }
