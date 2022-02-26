@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Entities;
 
-namespace Domain.Interfaces
+namespace Domain.Interfaces;
+
+public interface ICommentRepository
 {
-    internal class ICommentRepository
-    {
-    }
+    IEnumerable<Comment> GetAll(int postId);
+    Comment GetById(int postId, int commentId);
+    Comment Add(Comment post);
+    Comment Update(Comment post, string content);
+    void Remove(Comment post);
 }
