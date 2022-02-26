@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Domain.Exceptions;
 
-namespace Domain.Exceptions
+public class CommentNotFoundException : NotFoundException
 {
-    internal class CommentNotFoundException
+    public CommentNotFoundException() : base("Comment with given id was not found in database")
     {
     }
 }
