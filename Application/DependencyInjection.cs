@@ -41,6 +41,7 @@ public static class DependencyInjection
     public static IServiceCollection AddAuthorizationHandlers(this IServiceCollection services)
     {
         services.AddScoped<IAuthorizationHandler, PostOperationRequirementHandler>();
+        services.AddScoped<IAuthorizationHandler, CommentOperationRequirementHandler>();
 
         return services;
     }
