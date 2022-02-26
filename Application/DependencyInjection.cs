@@ -33,6 +33,7 @@ public static class DependencyInjection
         services.AddScoped<IAccountService, AccountService>();
         services.AddScoped<IUserContextService, UserContextService>();
         services.AddScoped<IPostService, PostService>();
+        services.AddScoped<ICommentService, CommentService>();
         services.AddHttpContextAccessor();
 
         return services;
